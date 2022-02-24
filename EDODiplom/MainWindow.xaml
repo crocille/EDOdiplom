@@ -16,6 +16,7 @@
             <Image Source="/Resources/logo.png" />
             <TextBlock Text="НефтеГазоТехнологии" VerticalAlignment="Center"/>
         </StackPanel>
-        <Frame Name="FrName" Grid.Row="1"/>
+        <Frame Name="FrNav" Grid.Row="1"/>
+
     </Grid>
 </Window>
