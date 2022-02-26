@@ -6,19 +6,24 @@
       xmlns:local="clr-namespace:EDODiplom.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="MenuPage">
+      Title="Меню">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" HorizontalAlignment="Left" Width="270">
-            <Button Content="Договоры" Click="BtContractClick" HorizontalAlignment="Left"/>
-            <Button Content="Материалы" Click="BtMaterialCLick" HorizontalAlignment="Left"/>
-            <Button Content="Поставщики" Click="BtSupplierClick" HorizontalAlignment="Left"/>
-            <Button Content="Поставка" Click="BtSupplyClick" HorizontalAlignment="Left"/>
-            <Button Content="Строительные объекты" Click="BtBuldObjectClick" HorizontalAlignment="Left"/>
-            <Button Content="Документация на объекты" Click="BtObjectDocument" HorizontalAlignment="Left"/>
+        <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="450">
+            <StackPanel.Resources>
+                <Style TargetType="Button" BasedOn="{StaticResource BaseButton}">
+                    <Setter Property="Background" Value="{StaticResource Add}"/>
+                </Style>
+            </StackPanel.Resources>
+            <Button Content="Договоры" Click="BtContractClick"/>
+            <Button Content="Материалы" Click="BtMaterialCLick"/>
+            <Button Content="Поставщики" Click="BtSupplierClick"/>
+            <Button Content="Поставка" Click="BtSupplyClick"/>
+            <Button Content="Строительные объекты" Click="BtBuldObjectClick"/>
+            <Button Content="Документация на объекты" Click="BtObjectDocument"/>
         </StackPanel>
     </Grid>
 </Page>

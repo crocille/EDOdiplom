@@ -103,6 +103,7 @@
     <Compile Include="Database\Entity\ObjectDocument.cs" />
     <Compile Include="Database\Entity\Supplier.cs" />
     <Compile Include="Database\Entity\Supply.cs" />
+    <Compile Include="Database\Entity\User.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -112,6 +113,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\ContractListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MaterialListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -126,6 +131,9 @@
     </Compile>
     <Compile Include="Pages\ContractListPage.xaml.cs">
       <DependentUpon>ContractListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MaterialListPage.xaml.cs">
+      <DependentUpon>MaterialListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\MenuPage.xaml.cs">
       <DependentUpon>MenuPage.xaml</DependentUpon>
@@ -165,6 +173,7 @@
   <ItemGroup>
     <Resource Include="Resources\picture.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

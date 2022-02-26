@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:EDODiplom.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ContractListPage">
+      Title="Список договоров">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -15,7 +15,7 @@
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
         <TextBox Name="TbSearch" TextChanged="TbSearchChange" Grid.Row="0"/>
-        <ListView Name="LvContracts" Grid.Row="1" SelectionMode="Multiple">
+        <ListView Name="LvContracts" Grid.Row="1" SelectionMode="Multiple" VerticalAlignment="Top">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -52,6 +52,5 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-
     </Grid>
 </Page>

@@ -25,8 +25,9 @@ namespace EDODiplom.Database
 
         public int Suppliers_ID_Supplier { get; set; }
 
-        public virtual Supplier Supplier { get; set; }
         [Required]
         public byte[] DocumentScan { get; set; }
+
+        public virtual Supplier Supplier { get; set; }
     }
 }

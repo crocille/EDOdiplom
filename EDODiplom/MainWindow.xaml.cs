@@ -1,5 +1,4 @@
-﻿using EDODiplom.Database;
-using EDODiplom.Pages;
+﻿using EDODiplom.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +25,6 @@ namespace EDODiplom
         {
             InitializeComponent();
             FrNav.Navigate(new AutorizationPage());
-           
         }
     }
 }

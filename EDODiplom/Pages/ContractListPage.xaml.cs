@@ -28,7 +28,7 @@ namespace EDODiplom.Pages
         }
         private void UpdateData()
         {
-            IEnumerable<Contract> contracts = EfModel.Init().Contracts
+          IEnumerable<Contract> contracts = EfModel.Init().Contracts
                 .Where(c => c.Name.Contains(TbSearch.Text));
             LvContracts.ItemsSource = contracts.ToList();
         }

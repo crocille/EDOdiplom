@@ -6,37 +6,36 @@ namespace EDODiplom.Database
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("BuildObject")]
-    public partial class BuildObject
+    [Table("User")]
+    public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public BuildObject()
+        public User()
         {
-            ObjectDocuments = new HashSet<ObjectDocument>();
+            BuildObjects = new HashSet<BuildObject>();
             Supplies = new HashSet<Supply>();
         }
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int ID_BuildObject { get; set; }
+        public int idUser { get; set; }
 
         [Required]
         [StringLength(45)]
-        public string BuildObjectName { get; set; }
+        public string Password { get; set; }
 
         [Required]
-        public byte[] BuildObjectPhoto { get; set; }
+        [StringLength(45)]
+        public string Login { get; set; }
 
-        public int Clients_id_Client { get; set; }
+        [Required]
+        [StringLength(60)]
+        public string FIO { get; set; }
 
-        public int User_idUser { get; set; }
-
-        public virtual Client Client { get; set; }
-
-        public virtual User User { get; set; }
+        public int Role { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ObjectDocument> ObjectDocuments { get; set; }
+        public virtual ICollection<BuildObject> BuildObjects { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Supply> Supplies { get; set; }

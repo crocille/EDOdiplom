@@ -24,5 +24,10 @@ namespace EDODiplom.Pages
         {
             InitializeComponent();
         }
+
+        private void BtEntryClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new MenuPage());
+        }
     }
 }

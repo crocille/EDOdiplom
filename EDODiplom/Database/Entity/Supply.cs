@@ -23,6 +23,8 @@ namespace EDODiplom.Database
 
         public int BuildObject_ID_BuildObject { get; set; }
 
+        public int User_idUser { get; set; }
+
         public DateTime Date { get; set; }
 
         public virtual BuildObject BuildObject { get; set; }
@@ -31,5 +33,7 @@ namespace EDODiplom.Database
         public virtual ICollection<Materials_has_Supply> Materials_has_Supply { get; set; }
 
         public virtual Supplier Supplier { get; set; }
+
+        public virtual User User { get; set; }
     }
 }

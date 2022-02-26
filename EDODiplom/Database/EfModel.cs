@@ -12,11 +12,10 @@ namespace EDODiplom.Database
         {
             if (Instance == null)
                 Instance = new EfModel();
-            return Instance;
+                return Instance;
         }
-         
         public EfModel()
-            : base("name=EfModel")
+            : base("name=EfModel1")
         {
         }
 
@@ -30,6 +29,7 @@ namespace EDODiplom.Database
         public virtual DbSet<ObjectDocument> ObjectDocuments { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
         public virtual DbSet<Supply> Supplies { get; set; }
+        public virtual DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -142,6 +142,30 @@ namespace EDODiplom.Database
                 .HasMany(e => e.Materials_has_Supply)
                 .WithRequired(e => e.Supply)
                 .HasForeignKey(e => e.Supply_ID_Supplier)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<User>()
+                .Property(e => e.Password)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<User>()
+                .Property(e => e.Login)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<User>()
+                .Property(e => e.FIO)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<User>()
+                .HasMany(e => e.BuildObjects)
+                .WithRequired(e => e.User)
+                .HasForeignKey(e => e.User_idUser)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<User>()
+                .HasMany(e => e.Supplies)
+                .WithRequired(e => e.User)
+                .HasForeignKey(e => e.User_idUser)
                 .WillCascadeOnDelete(false);
         }
     }

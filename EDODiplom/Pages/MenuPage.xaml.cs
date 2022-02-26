@@ -24,5 +24,35 @@ namespace EDODiplom.Pages
         {
             InitializeComponent();
         }
+
+        private void BtContractClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ContractListPage());
+        }
+
+        private void BtMaterialCLick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new MaterialListPage());
+        }
+
+        private void BtSupplierClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtSupplyClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtBuldObjectClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtObjectDocument(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
