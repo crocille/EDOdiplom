@@ -13,15 +13,16 @@
             <RowDefinition/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <StackPanel Width="200" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Width="300" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel.Resources>
                 <Style TargetType="Button" BasedOn="{StaticResource BaseButton}">
-                    <Setter Property="Background" Value="{StaticResource Add}"/>
+                    <Setter Property="Background" Value="{StaticResource Acent}"/>
                 </Style>
             </StackPanel.Resources>
             <TextBox/>
             <TextBox/>
-            <Button Content="Вход" Click="BtEntryClick" Height="30" Width="120"/>
+            <Button Content="Вход" Click="BtEntryClick" Height="40" Width="150"/>
         </StackPanel>
+        <TextBlock Text="ООО НГТ" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
     </Grid>
 </Page>

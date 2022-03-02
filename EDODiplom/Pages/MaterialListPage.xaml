@@ -12,7 +12,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition/>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
            <Grid.ColumnDefinitions>
@@ -74,11 +74,37 @@
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>
+                                <TextBlock Name="TbNotFound" Grid.Row="1" Text="Нет результатов" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="50" Visibility="Hidden"/>
                             </Grid>
                         </Grid>
                     </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Width="auto">
+             <StackPanel.Resources>
+                <Style TargetType="Button" BasedOn="{StaticResource BaseButton}">
+                    <Setter Property="Background" Value="{StaticResource Add}"/>
+                </Style>
+            </StackPanel.Resources>
+            <Button Content="Добавить" HorizontalAlignment="Left"/>
+            <Button Content="Изменить" HorizontalAlignment="Center"/>
+            <Button Content="Удалить" HorizontalAlignment="Right"/>
+        </StackPanel>
+        <StackPanel  Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <StackPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Margin" Value="3,0"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="FontSize" Value="25"/>
+                </Style>
+            </StackPanel.Resources>
+            <Button Name="BtBackPage" Content="&lt;"/>
+            <StackPanel Name="StackPage" Orientation="Horizontal">
+
+            </StackPanel>
+            <Button Name="BtNextPage" Content=">"/>
+        </StackPanel>
     </Grid>
 </Page>

@@ -37,5 +37,28 @@ namespace EDODiplom.Pages
         {
             UpdateData();
         }
+
+        private void BtContractAddCLick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ContractEditPage(new Contract()));
+        }
+
+        private void BtContractEditClick(object sender, RoutedEventArgs e)
+        {
+            if (LvContracts.SelectedItems.Count > 0)
+            {
+                Contract contract = LvContracts.SelectedItem as Contract;
+                NavigationService.Navigate(new ContractEditPage(contract));
+            }
+
+        }
+
+        private void BtContractDelClick(object sender, RoutedEventArgs e)
+        {
+            Button btContract = sender as Button;
+            Contract contract = btContract.DataContext as Contract;
+            EfModel.Init().Contracts.Remove(contract);
+            EfModel.Init().SaveChanges();
+        }
     }
 }

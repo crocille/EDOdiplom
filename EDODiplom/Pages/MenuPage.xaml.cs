@@ -37,7 +37,7 @@ namespace EDODiplom.Pages
 
         private void BtSupplierClick(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new SupplierListPage());
         }
 
         private void BtSupplyClick(object sender, RoutedEventArgs e)
