@@ -28,7 +28,6 @@ namespace EDODiplom.Pages
         public ContractEditPage(Contract contract)
         {
             this.Contract = contract;
-            Contract = new Contract { Date = DateTime.Now };
             InitializeComponent();
             DataContext = Contract;
         }
@@ -54,6 +53,11 @@ namespace EDODiplom.Pages
             {
                 Contract.DocumentScan = File.ReadAllBytes(openFile.FileName);
             }
+        }
+
+        private void BtRemoveClick(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Авторизация">
 
-    <Grid>
+    <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="50"/>
@@ -21,8 +21,15 @@
             </StackPanel.Resources>
             <TextBox/>
             <TextBox/>
-            <Button Content="Вход" Click="BtEntryClick" Height="40" Width="150"/>
+            <Button Content="Вход" Click="BtEntryClick" Height="40" Width="150">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="7"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
         </StackPanel>
-        <TextBlock Text="ООО НГТ" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Label  Content="Добро пожаловать!" HorizontalAlignment="Center" Margin="304,68,304,289" FontSize="20"/>
+        <TextBlock Text="ООО НГТ" FontSize="15" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
     </Grid>
 </Page>

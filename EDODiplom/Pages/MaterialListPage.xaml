@@ -84,7 +84,7 @@
         <StackPanel Grid.Row="2" Orientation="Horizontal" Width="auto">
              <StackPanel.Resources>
                 <Style TargetType="Button" BasedOn="{StaticResource BaseButton}">
-                    <Setter Property="Background" Value="{StaticResource Add}"/>
+                    <Setter Property="Background" Value="{StaticResource Acent}"/>
                 </Style>
             </StackPanel.Resources>
             <Button Content="Добавить" HorizontalAlignment="Left"/>

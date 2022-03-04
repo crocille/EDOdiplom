@@ -5,7 +5,6 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <!--Color-->
-        <SolidColorBrush x:Key="Add" Color="#FFE8B2"/>
         <SolidColorBrush x:Key="Acent" Color="#48A2FA"/>
         <!--ComboBox-->
         <Style TargetType="ComboBox">
@@ -29,8 +28,7 @@
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="Margin" Value="5"/>
             <Setter Property="FontFamily" Value="Calibri"/>
-            <Setter Property="Width" Value="300"/>
-            <Setter Property="Height" Value="50"/>
+          
         </Style>
         <Style TargetType="Button" BasedOn="{StaticResource BaseButton}"/>
         <BitmapImage x:Key="Picture" UriSource="/Resources/picture.png"/>

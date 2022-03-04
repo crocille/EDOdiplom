@@ -55,8 +55,9 @@ namespace EDODiplom.Pages
 
         private void BtContractDelClick(object sender, RoutedEventArgs e)
         {
+          
             Button btContract = sender as Button;
-            Contract contract = btContract.DataContext as Contract;
+            Contract contract = LvContracts.DataContext as Contract;
             EfModel.Init().Contracts.Remove(contract);
             EfModel.Init().SaveChanges();
         }

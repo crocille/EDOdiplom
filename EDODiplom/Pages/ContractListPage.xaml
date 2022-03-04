@@ -52,16 +52,28 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <StackPanel Grid.Row="2" Orientation="Horizontal" Width="auto">
-            <StackPanel.Resources>
-                <Style TargetType="Button" BasedOn="{StaticResource BaseButton}">
-                    <Setter Property="Background" Value="{StaticResource Add}"/>
+        <Grid Grid.Row="2">
+            <Grid.Resources>
+                <Style x:Key="EditStyle" TargetType="Button" BasedOn="{StaticResource BaseButton}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Setter Property="Background" Value="{StaticResource Acent}"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding SelectedItems.Count, ElementName=LvContracts}"  Value="1">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
                 </Style>
-            </StackPanel.Resources>
-            <Button Content="Добавить" Click="BtContractAddCLick" HorizontalAlignment="Left"/>
-            <Button Content="Изменить" Click="BtContractEditClick" HorizontalAlignment="Center"/>
-            <Button Content="Удалить" Click="BtContractDelClick" HorizontalAlignment="Right"/>
-        </StackPanel>
+            </Grid.Resources>
+        <UniformGrid Grid.Row="2" Columns="3">
+            <UniformGrid.Resources>
+                <Style TargetType="Button" BasedOn="{StaticResource BaseButton}">
+                    <Setter Property="Background" Value="{StaticResource Acent}"/>
+                </Style>
+            </UniformGrid.Resources>
+            <Button Content="Добавить" Click="BtContractAddCLick"/>
+            <Button Content="Изменить" Click="BtContractEditClick" Style="{StaticResource EditStyle}"/>
+            <Button Content="Удалить" Click="BtContractDelClick"/>
+        </UniformGrid>
         <StackPanel  Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
             <StackPanel.Resources>
                 <Style TargetType="Button">
@@ -77,5 +89,6 @@
             </StackPanel>
             <Button Name="BtNextPage" Content=">"/>
         </StackPanel>
+       </Grid>
     </Grid>
 </Page>

@@ -21,7 +21,7 @@
                     </Style>
                 </StackPanel.Resources>
                 <Image Source="{Binding DocumentScan, TargetNullValue={StaticResource Picture}}" Height="150" MouseDown="ImageChangeClick"/>
-                <StackPanel>
+                <StackPanel Grid.Row="0" Orientation="Vertical">
                     <TextBlock Text="Номер договора"/>
                     <TextBox Text="{Binding Number}"/>
                     <TextBlock Text="Наименование"/>
@@ -31,13 +31,14 @@
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>
-        <StackPanel Grid.Row="1">
-            <StackPanel.Resources>
+        <UniformGrid Grid.Row="1" Columns="2">
+            <UniformGrid.Resources>
                 <Style TargetType="Button" BasedOn="{StaticResource BaseButton}">
-                    <Setter Property="Background" Value="{StaticResource Add}"/>
+                    <Setter Property="Background" Value="{StaticResource Acent}"/>
                 </Style>
-            </StackPanel.Resources>
+            </UniformGrid.Resources>
+            <Button Content="Удалить" Click="BtRemoveClick"/>
             <Button Content="Сохранить" Click="BtSaveContractClick"/>
-        </StackPanel>
+        </UniformGrid>
     </Grid>
 </Page>

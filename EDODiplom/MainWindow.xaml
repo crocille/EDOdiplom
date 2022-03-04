@@ -17,7 +17,5 @@
             <TextBlock Text="НефтеГазоТехнологии" VerticalAlignment="Center" FontSize="40"/>
         </StackPanel>
         <Frame Name="FrNav" Grid.Row="1"/>
-        
-
     </Grid>
 </Window>
