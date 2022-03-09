@@ -28,8 +28,8 @@ namespace EDODiplom.Pages
         }
         private void UpdateData()
         {
-          IEnumerable<Contract> contracts = EfModel.Init().Contracts
-                .Where(c => c.Name.Contains(TbSearch.Text));
+            IEnumerable<Contract> contracts = EfModel.Init().Contracts
+                  .Where(c => c.Name.Contains(TbSearch.Text));
             LvContracts.ItemsSource = contracts.ToList();
         }
 
@@ -55,11 +55,17 @@ namespace EDODiplom.Pages
 
         private void BtContractDelClick(object sender, RoutedEventArgs e)
         {
-          
-            Button btContract = sender as Button;
-            Contract contract = LvContracts.DataContext as Contract;
-            EfModel.Init().Contracts.Remove(contract);
-            EfModel.Init().SaveChanges();
+
+            if (LvContracts.SelectedItems.Count > 0)
+            {
+                Contract contract = LvContracts.SelectedItem as Contract;
+                if(MessageBox.Show("Вы точно хотите удалить договор " + contract.Name + "?", "Удалить договор", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    EfModel.Init().Contracts.Remove(contract);
+                    EfModel.Init().SaveChanges();
+                }
+            }
         }
     }
 }
+

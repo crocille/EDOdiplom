@@ -22,6 +22,8 @@
                 </StackPanel.Resources>
                 <Image Source="{Binding DocumentScan, TargetNullValue={StaticResource Picture}}" Height="150" MouseDown="ImageChangeClick"/>
                 <StackPanel Grid.Row="0" Orientation="Vertical">
+                    <TextBlock Text="ID Поставщика"/>
+                    <ComboBox Name="CbSuppliers" SelectedItem="{Binding Suppliers_ID_Supplier}" DisplayMemberPath="Suppliers_ID_Supplier"/>
                     <TextBlock Text="Номер договора"/>
                     <TextBox Text="{Binding Number}"/>
                     <TextBlock Text="Наименование"/>

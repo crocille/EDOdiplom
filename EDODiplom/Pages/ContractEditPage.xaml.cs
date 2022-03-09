@@ -24,20 +24,21 @@ namespace EDODiplom.Pages
     /// </summary>
     public partial class ContractEditPage : Page
     {
-        Contract Contract;
+        Contract сontract;
         public ContractEditPage(Contract contract)
         {
-            this.Contract = contract;
+            this.сontract = contract;
             InitializeComponent();
-            DataContext = Contract;
+            CbSuppliers.ItemsSource = EfModel.Init().Contracts.ToList();
+            DataContext = сontract;
         }
 
         private void BtSaveContractClick(object sender, RoutedEventArgs e)
         {
             try
             {
-                if (Contract.ID_Contract == 0)
-                    EfModel.Init().Contracts.Add(Contract);
+                if (сontract.ID_Contract == 0)
+                    EfModel.Init().Contracts.Add(сontract);
                 EfModel.Init().SaveChanges();
             }
             catch (DbEntityValidationException ex)
@@ -51,7 +52,7 @@ namespace EDODiplom.Pages
             OpenFileDialog openFile = new OpenFileDialog { Filter = "Jpeg files|*.jpg|All files|*.*" };
             if (openFile.ShowDialog() == true)
             {
-                Contract.DocumentScan = File.ReadAllBytes(openFile.FileName);
+                сontract.DocumentScan = File.ReadAllBytes(openFile.FileName);
             }
         }
 

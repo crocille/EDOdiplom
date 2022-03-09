@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Image Source="/Resources/logo.png"/>
-            <TextBlock Text="НефтеГазоТехнологии" VerticalAlignment="Center" FontSize="40"/>
+            <TextBlock Text="НефтеГазоТехнологии" VerticalAlignment="Center" FontSize="35"/>
         </StackPanel>
         <Frame Name="FrNav" Grid.Row="1"/>
     </Grid>

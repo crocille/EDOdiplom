@@ -1,31 +1,25 @@
 ﻿<Page x:Class="EDODiplom.Pages.MenuPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:EDODiplom.Pages"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="Меню">
-
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EDODiplom.Pages"
+        xmlns:hamburgerMenu="clr-namespace:HamburgerMenu;assembly=HamburgerMenu"
+        mc:Ignorable="d"
+        MinHeight="450" MinWidth="800"
+        Title="Главное меню">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="450">
-            <StackPanel.Resources>
-                <Style TargetType="Button" BasedOn="{StaticResource BaseButton}">
-                    <Setter Property="Background" Value="{StaticResource Acent}"/>
-                    <Setter Property="Width" Value="300"/>
-                    <Setter Property="Height" Value="50"/>
-                </Style>
-            </StackPanel.Resources>
-            <Button Content="Договоры" Click="BtContractClick"/>
-            <Button Content="Материалы" Click="BtMaterialCLick"/>
-            <Button Content="Поставщики" Click="BtSupplierClick"/>
-            <Button Content="Поставка" Click="BtSupplyClick"/>
-            <Button Content="Строительные объекты" Click="BtBuldObjectClick"/>
-            <Button Content="Документация на объекты" Click="BtObjectDocument"/>
-        </StackPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <hamburgerMenu:HamburgerMenu Grid.Column="0" Background="#FF72ADF3" MenuIconColor="White" SelectionIndicatorColor="White" MenuItemForeground="White" HorizontalAlignment="Left">
+            <hamburgerMenu:HamburgerMenuItem Icon="/Resources/contract.png" Text="Договоры" Selected="ItemContracts"/>
+            <hamburgerMenu:HamburgerMenuItem Icon="/Resources/material.png"  Text="Материалы" Selected="ItemMaterials" />
+            <hamburgerMenu:HamburgerMenuItem Icon="/Resources/suppliers.png" Text="Поставщики" Selected="ItemSuppliers"/>
+            <hamburgerMenu:HamburgerMenuItem Icon="/Resources/build.png" Text="Строительные объекты" Selected="ItemBuildObject"/>
+            <hamburgerMenu:HamburgerMenuItem Icon="/Resources/document.png" Text="Документация на объекты" Selected="ItemDocumentObject"/>
+        </hamburgerMenu:HamburgerMenu>
+        <Frame Grid.Column="1" Name="FRnav"/>
     </Grid>
 </Page>

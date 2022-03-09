@@ -11,9 +11,8 @@
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <StackPanel Width="300" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Grid.Row="1" Width="250" VerticalAlignment="Center">
             <StackPanel.Resources>
                 <Style TargetType="Button" BasedOn="{StaticResource BaseButton}">
                     <Setter Property="Background" Value="{StaticResource Acent}"/>
@@ -21,6 +20,7 @@
             </StackPanel.Resources>
             <TextBox/>
             <TextBox/>
+            <CheckBox Content="Показать пароль" FontSize="14" Margin="10"/>
             <Button Content="Вход" Click="BtEntryClick" Height="40" Width="150">
                 <Button.Resources>
                     <Style TargetType="Border">
@@ -29,7 +29,5 @@
                 </Button.Resources>
             </Button>
         </StackPanel>
-        <Label  Content="Добро пожаловать!" HorizontalAlignment="Center" Margin="304,68,304,289" FontSize="20"/>
-        <TextBlock Text="ООО НГТ" FontSize="15" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
     </Grid>
 </Page>

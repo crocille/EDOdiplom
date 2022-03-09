@@ -2,12 +2,14 @@ namespace EDODiplom.Database
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Runtime.CompilerServices;
 
     [Table("Material")]
-    public partial class Material
+    public partial class Material:INotifyPropertyChanged
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Material()
@@ -25,7 +27,15 @@ namespace EDODiplom.Database
         public string Name { get; set; }
 
         [Required]
-        public byte[] ImageMaterial { get; set; }
+        private byte[] _ImageMaterial;
+        public byte[] ImageMaterial {
+            get { return _ImageMaterial; }
+            set
+            {
+                _ImageMaterial = value;
+                PropChange("ImageMaterial");
+            }
+        }
 
         [StringLength(45)]
         public string Description { get; set; }
@@ -38,5 +48,12 @@ namespace EDODiplom.Database
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MaterialType> MaterialTypes { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void PropChange([CallerMemberName] string PropertyName = "")
+        {
+            if (PropertyChanged != null)
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(PropertyName));
+        }
     }
 }

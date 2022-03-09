@@ -35,6 +35,7 @@
                                     <RowDefinition/>
                                     <RowDefinition/>
                                     <RowDefinition/>
+                                    <RowDefinition/>
                                 </Grid.RowDefinitions>
                                 <StackPanel Orientation="Horizontal" Grid.Row="0">
                                     <StackPanel.Resources>
@@ -44,8 +45,9 @@
                                     </StackPanel.Resources>
                                     <TextBlock Text="{Binding Name}"/>
                                 </StackPanel>
-                                <TextBlock Grid.Row="1" Text="{Binding Number, StringFormat='№ {0}'}"/>
-                                <TextBlock Grid.Row="2" Text="{Binding Date, StringFormat='yyyy-MM-dd'}"/>
+                                <TextBlock Grid.Row="1" Text="{Binding Suppliers_ID_Supplier}"/>
+                                <TextBlock Grid.Row="2" Text="{Binding Number, StringFormat='№ {0}'}"/>
+                                <TextBlock Grid.Row="3" Text="{Binding Date, StringFormat='yyyy-MM-dd'}"/>
                             </Grid>
                         </Grid>
                     </Border>

@@ -58,5 +58,20 @@ namespace EDODiplom.Pages
         {
             UpdateData();
         }
+
+        private void BtMaterialAddCLick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtMaterialDelClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtMaterialEditClick(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

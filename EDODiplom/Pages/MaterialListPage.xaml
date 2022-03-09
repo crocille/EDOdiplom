@@ -15,16 +15,15 @@
             <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
-           <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-           </Grid.ColumnDefinitions>
-           <TextBox Name="TbSearch" Grid.Column="0" TextChanged="TbSearchChange"/>
-           <ComboBox Name="CbSort" Grid.Column="1" SelectionChanged="SortChange"/>
-           <ComboBox Name="CbFilter" Grid.Column="2" SelectionChanged="FilterChange" DisplayMemberPath= "MaterialTypeName"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBox Name="TbSearch" Grid.Column="0" TextChanged="TbSearchChange"/>
+            <ComboBox Name="CbSort" Grid.Column="1" SelectionChanged="SortChange"/>
+            <ComboBox Name="CbFilter" Grid.Column="2" SelectionChanged="FilterChange" DisplayMemberPath= "MaterialTypeName"/>
         </Grid>
-        
         <ListView Name="LvMaterials" Grid.Row="1" SelectionMode="Multiple" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
@@ -81,30 +80,43 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <StackPanel Grid.Row="2" Orientation="Horizontal" Width="auto">
-             <StackPanel.Resources>
-                <Style TargetType="Button" BasedOn="{StaticResource BaseButton}">
+        <Grid Grid.Row="2">
+            <Grid.Resources>
+                <Style x:Key="EditStyle" TargetType="Button" BasedOn="{StaticResource BaseButton}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
                     <Setter Property="Background" Value="{StaticResource Acent}"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding SelectedItems.Count, ElementName=LvMaterials}"  Value="1">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
                 </Style>
-            </StackPanel.Resources>
-            <Button Content="Добавить" HorizontalAlignment="Left"/>
-            <Button Content="Изменить" HorizontalAlignment="Center"/>
-            <Button Content="Удалить" HorizontalAlignment="Right"/>
-        </StackPanel>
-        <StackPanel  Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
-            <StackPanel.Resources>
-                <Style TargetType="Button">
-                    <Setter Property="Margin" Value="3,0"/>
-                    <Setter Property="BorderBrush" Value="Transparent"/>
-                    <Setter Property="Background" Value="Transparent"/>
-                    <Setter Property="FontSize" Value="25"/>
-                </Style>
-            </StackPanel.Resources>
-            <Button Name="BtBackPage" Content="&lt;"/>
-            <StackPanel Name="StackPage" Orientation="Horizontal">
+            </Grid.Resources>
+            <UniformGrid Grid.Row="2" Columns="3">
+                <UniformGrid.Resources>
+                    <Style TargetType="Button" BasedOn="{StaticResource BaseButton}">
+                        <Setter Property="Background" Value="{StaticResource Acent}"/>
+                    </Style>
+                </UniformGrid.Resources>
+                <Button Content="Добавить" Click="BtMaterialAddCLick"/>
+                <Button Content="Изменить" Click="BtMaterialEditClick" Style="{StaticResource EditStyle}"/>
+                <Button Content="Удалить" Click="BtMaterialDelClick"/>
+            </UniformGrid>
+            <StackPanel  Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                <StackPanel.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="Margin" Value="3,0"/>
+                        <Setter Property="BorderBrush" Value="Transparent"/>
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="FontSize" Value="25"/>
+                    </Style>
+                </StackPanel.Resources>
+                <Button Name="BtBackPage" Content="&lt;"/>
+                <StackPanel Name="StackPage" Orientation="Horizontal">
 
+                </StackPanel>
+                <Button Name="BtNextPage" Content=">"/>
             </StackPanel>
-            <Button Name="BtNextPage" Content=">"/>
-        </StackPanel>
+        </Grid>
     </Grid>
 </Page>
