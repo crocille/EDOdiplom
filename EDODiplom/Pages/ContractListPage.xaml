@@ -6,12 +6,13 @@
       xmlns:local="clr-namespace:EDODiplom.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Список договоров">
+      Title="Список договоров" IsVisibleChanged="PageVisChange">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
         <TextBox Name="TbSearch" TextChanged="TbSearchChange" Grid.Row="0"/>
@@ -45,7 +46,7 @@
                                     </StackPanel.Resources>
                                     <TextBlock Text="{Binding Name}"/>
                                 </StackPanel>
-                                <TextBlock Grid.Row="1" Text="{Binding Suppliers_ID_Supplier}"/>
+                                <TextBlock Grid.Row="1" Text="{Binding Supplier.Title}"/>
                                 <TextBlock Grid.Row="2" Text="{Binding Number, StringFormat='№ {0}'}"/>
                                 <TextBlock Grid.Row="3" Text="{Binding Date, StringFormat='yyyy-MM-dd'}"/>
                             </Grid>
@@ -55,6 +56,24 @@
             </ListView.ItemTemplate>
         </ListView>
         <Grid Grid.Row="2">
+            <UniformGrid Columns="3">
+                <UniformGrid.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="Transparent"/>
+                    </Style>
+                </UniformGrid.Resources>
+                <Button>
+                    <Image Source="/Resources/printer.png" />
+                </Button>
+                <Button>
+                    <Image Source="/Resources/import.png"/>
+                </Button>
+                <Button>
+                    <Image Source="/Resources/export.png" />
+                </Button>
+            </UniformGrid>
+        </Grid>
+        <Grid Grid.Row="3">
             <Grid.Resources>
                 <Style x:Key="EditStyle" TargetType="Button" BasedOn="{StaticResource BaseButton}">
                     <Setter Property="Visibility" Value="Collapsed"/>
@@ -66,7 +85,7 @@
                     </Style.Triggers>
                 </Style>
             </Grid.Resources>
-        <UniformGrid Grid.Row="2" Columns="3">
+        <UniformGrid Grid.Row="3" Columns="3">
             <UniformGrid.Resources>
                 <Style TargetType="Button" BasedOn="{StaticResource BaseButton}">
                     <Setter Property="Background" Value="{StaticResource Acent}"/>
@@ -74,7 +93,7 @@
             </UniformGrid.Resources>
             <Button Content="Добавить" Click="BtContractAddCLick"/>
             <Button Content="Изменить" Click="BtContractEditClick" Style="{StaticResource EditStyle}"/>
-            <Button Content="Удалить" Click="BtContractDelClick"/>
+            <Button Content="Удалить" Click="BtContractDelClick" Style="{StaticResource EditStyle}"/>
         </UniformGrid>
         <StackPanel  Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
             <StackPanel.Resources>

@@ -13,13 +13,30 @@
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <hamburgerMenu:HamburgerMenu Grid.Column="0" Background="#FF72ADF3" MenuIconColor="White" SelectionIndicatorColor="White" MenuItemForeground="White" HorizontalAlignment="Left">
-            <hamburgerMenu:HamburgerMenuItem Icon="/Resources/contract.png" Text="Договоры" Selected="ItemContracts"/>
-            <hamburgerMenu:HamburgerMenuItem Icon="/Resources/material.png"  Text="Материалы" Selected="ItemMaterials" />
-            <hamburgerMenu:HamburgerMenuItem Icon="/Resources/suppliers.png" Text="Поставщики" Selected="ItemSuppliers"/>
-            <hamburgerMenu:HamburgerMenuItem Icon="/Resources/build.png" Text="Строительные объекты" Selected="ItemBuildObject"/>
-            <hamburgerMenu:HamburgerMenuItem Icon="/Resources/document.png" Text="Документация на объекты" Selected="ItemDocumentObject"/>
-        </hamburgerMenu:HamburgerMenu>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <hamburgerMenu:HamburgerMenu Background="#FF72ADF3" MenuIconColor="White" SelectionIndicatorColor="White" MenuItemForeground="White" HorizontalAlignment="Left">
+                <hamburgerMenu:HamburgerMenuItem Icon="/Resources/contract.png" Text="Договоры" Selected="ItemContracts"/>
+                <hamburgerMenu:HamburgerMenuItem Icon="/Resources/material.png"  Text="Материалы" Selected="ItemMaterials" />
+                <hamburgerMenu:HamburgerMenuItem Icon="/Resources/suppliers.png" Text="Поставщики" Selected="ItemSuppliers"/>
+                <hamburgerMenu:HamburgerMenuItem Icon="/Resources/build.png" Text="Строительные объекты" Selected="ItemBuildObject"/>
+                <hamburgerMenu:HamburgerMenuItem Icon="/Resources/document.png" Text="Документация на объекты" Selected="ItemDocumentObject"/>
+            </hamburgerMenu:HamburgerMenu>
+            <Button Click="BtExit" Grid.Row="1" Padding="10" Margin="0" Background="#FF72ADF3">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="Background" Value="Transparent"/>
+                    </Style>
+                </Button.Resources>
+                <Button.Content>
+                    <Image Source="/Resources/entry.png" />
+                </Button.Content>
+            </Button>
+        </Grid>
+        
         <Frame Grid.Column="1" Name="FRnav"/>
     </Grid>
 </Page>

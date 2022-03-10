@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EDODiplom.Database;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,14 +21,40 @@ namespace EDODiplom.Pages
     /// </summary>
     public partial class AutorizationPage : Page
     {
+        public string password = "";
         public AutorizationPage()
         {
             InitializeComponent();
+            TbLogin.DataContext = this;
+            TbPass.DataContext = this;
         }
 
         private void BtEntryClick(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new MenuPage());
+            User user = EfModel.Init().Users.FirstOrDefault(u => u.Login == TbLogin.Text && u.Password == PbPass.Password);
+            if (user != null)
+            {
+                if (user.Role == 2)
+                {
+                    NavigationService.Navigate(new MenuPage());
+                }
+                else
+                {
+
+                }
+            }
+            else
+                MessageBox.Show("Неверный логин или пароль!");
+        }
+
+        private void CBPassCheck(object sender, RoutedEventArgs e)
+        {
+            TbPass.Text = PbPass.Password;
+        }
+
+        private void CBPassUncheck(object sender, RoutedEventArgs e)
+        {
+            PbPass.Password = TbPass.Text;
         }
     }
 }

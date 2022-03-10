@@ -3,6 +3,7 @@ using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
+using System.Diagnostics.Contracts;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Contract = EDODiplom.Database.Contract;
 
 namespace EDODiplom.Pages
 {
@@ -29,7 +31,7 @@ namespace EDODiplom.Pages
         {
             this.сontract = contract;
             InitializeComponent();
-            CbSuppliers.ItemsSource = EfModel.Init().Contracts.ToList();
+            CbSuppliers.ItemsSource = EfModel.Init().Suppliers.ToList();
             DataContext = сontract;
         }
 
@@ -54,11 +56,6 @@ namespace EDODiplom.Pages
             {
                 сontract.DocumentScan = File.ReadAllBytes(openFile.FileName);
             }
-        }
-
-        private void BtRemoveClick(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

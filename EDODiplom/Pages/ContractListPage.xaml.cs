@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.Entity;
 
 namespace EDODiplom.Pages
 {
@@ -29,7 +30,7 @@ namespace EDODiplom.Pages
         private void UpdateData()
         {
             IEnumerable<Contract> contracts = EfModel.Init().Contracts
-                  .Where(c => c.Name.Contains(TbSearch.Text));
+                .Include(c => c.Supplier).Where(c => c.Name.Contains(TbSearch.Text));
             LvContracts.ItemsSource = contracts.ToList();
         }
 
@@ -55,16 +56,22 @@ namespace EDODiplom.Pages
 
         private void BtContractDelClick(object sender, RoutedEventArgs e)
         {
-
+            
             if (LvContracts.SelectedItems.Count > 0)
             {
                 Contract contract = LvContracts.SelectedItem as Contract;
                 if(MessageBox.Show("Вы точно хотите удалить договор " + contract.Name + "?", "Удалить договор", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
                     EfModel.Init().Contracts.Remove(contract);
-                    EfModel.Init().SaveChanges();
+                    EfModel.Init().SaveChanges(); 
+                    UpdateData();
                 }
-            }
+            }  
+        }
+
+        private void PageVisChange(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            UpdateData();
         }
     }
 }

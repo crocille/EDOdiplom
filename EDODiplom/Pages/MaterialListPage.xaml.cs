@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.Entity;
 
 namespace EDODiplom.Pages
 {
@@ -31,17 +32,44 @@ namespace EDODiplom.Pages
             CbFilter.SelectedIndex = 0;
 
             CbSort.Items.Add("Наименование");
-            CbSort.Items.Add("Цена");
-            CbSort.Items.Add("Количество");
+            CbSort.Items.Add("▲ Цена");
+            CbSort.Items.Add("▼ Цена");
+            CbSort.Items.Add("▲ Количество");
+            CbSort.Items.Add("▼ Количество");
 
             CbSort.SelectedIndex = 0;
         }
         //Метод обновления данных
         private void UpdateData()
         {
-          IEnumerable<Material> materials = EfModel.Init().Materials
+            IEnumerable<Material> materials = EfModel.Init().Materials
+                .Include(m => m.MaterialTypes).Include(m => m.Materials_has_Suppliers)
                 .Where(m => m.Name.Contains(TbSearch.Text));
-          LvMaterials.ItemsSource = materials.ToList();
+
+            if (CbFilter.SelectedIndex > 0)
+                materials = materials.Where(m => m.MaterialTypes.Select(mt=>mt.ID_MaterialType).Contains(
+                 (CbFilter.SelectedItem as MaterialType).ID_MaterialType));
+
+            switch (CbSort.SelectedIndex)
+            {
+                case 0:
+                    materials = materials.OrderBy(m => m.Name);
+                    break;
+                case 1:
+                    materials = materials.OrderByDescending(m => m.Materials_has_Suppliers.Min(ms=>ms.Material_Price));
+                    break;
+                case 2:
+                    materials = materials.OrderBy(m => m.Materials_has_Suppliers.Max(ms => ms.Material_Price));
+                    break;
+                case 3:
+                    materials = materials.OrderByDescending(m => m.Materials_has_Supply.Min(ms=>ms.Material_Count));
+                    break;
+                case 4:
+                    materials = materials.OrderBy(m => m.Materials_has_Supply.Max(ms => ms.Material_Count));
+                    break;
+            }
+
+            LvMaterials.ItemsSource = materials.ToList();
         }
 
         private void TbSearchChange(object sender, TextChangedEventArgs e)

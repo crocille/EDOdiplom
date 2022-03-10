@@ -5,7 +5,7 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <!--Color-->
-        <SolidColorBrush x:Key="Acent" Color="#48A2FA"/>
+        <SolidColorBrush x:Key="Acent" Color="#FF5EABF7"/>
         <!--ComboBox-->
         <Style TargetType="ComboBox">
             <Setter Property="Margin" Value="5"/>

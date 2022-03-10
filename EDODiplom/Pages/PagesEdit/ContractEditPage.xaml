@@ -14,16 +14,16 @@
             <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
         <ScrollViewer>
-            <StackPanel MaxWidth="500">
+            <StackPanel MaxWidth="500" VerticalAlignment="Center">
                 <StackPanel.Resources>
                     <Style TargetType="TextBox" BasedOn="{StaticResource BaseTextBox}">
                         <Setter Property="FontSize" Value="20"/>
                     </Style>
                 </StackPanel.Resources>
                 <Image Source="{Binding DocumentScan, TargetNullValue={StaticResource Picture}}" Height="150" MouseDown="ImageChangeClick"/>
-                <StackPanel Grid.Row="0" Orientation="Vertical">
-                    <TextBlock Text="ID Поставщика"/>
-                    <ComboBox Name="CbSuppliers" SelectedItem="{Binding Suppliers_ID_Supplier}" DisplayMemberPath="Suppliers_ID_Supplier"/>
+                <StackPanel Grid.Row="0" Orientation="Vertical" >
+                    <TextBlock Text="Поставщик"/>
+                    <ComboBox Name="CbSuppliers" SelectedItem="{Binding Supplier}" DisplayMemberPath="Title"/>
                     <TextBlock Text="Номер договора"/>
                     <TextBox Text="{Binding Number}"/>
                     <TextBlock Text="Наименование"/>
@@ -33,13 +33,12 @@
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>
-        <UniformGrid Grid.Row="1" Columns="2">
+        <UniformGrid Grid.Row="1" Columns="1">
             <UniformGrid.Resources>
                 <Style TargetType="Button" BasedOn="{StaticResource BaseButton}">
                     <Setter Property="Background" Value="{StaticResource Acent}"/>
                 </Style>
             </UniformGrid.Resources>
-            <Button Content="Удалить" Click="BtRemoveClick"/>
             <Button Content="Сохранить" Click="BtSaveContractClick"/>
         </UniformGrid>
     </Grid>
