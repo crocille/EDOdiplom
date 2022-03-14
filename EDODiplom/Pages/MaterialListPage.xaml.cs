@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.Entity;
+using EDODiplom.Pages.PagesEdit;
 
 namespace EDODiplom.Pages
 {
@@ -89,7 +90,7 @@ namespace EDODiplom.Pages
 
         private void BtMaterialAddCLick(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new MaterialEditPage());
         }
 
         private void BtMaterialDelClick(object sender, RoutedEventArgs e)

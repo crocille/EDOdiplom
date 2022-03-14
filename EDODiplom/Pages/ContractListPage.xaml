@@ -56,12 +56,13 @@
             </ListView.ItemTemplate>
         </ListView>
         <Grid Grid.Row="2">
-            <UniformGrid Columns="3">
-                <UniformGrid.Resources>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel.Resources>
                     <Style TargetType="Button">
                         <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Margin" Value="5"/>
                     </Style>
-                </UniformGrid.Resources>
+                </StackPanel.Resources>
                 <Button>
                     <Image Source="/Resources/printer.png" />
                 </Button>
@@ -71,12 +72,13 @@
                 <Button>
                     <Image Source="/Resources/export.png" />
                 </Button>
-            </UniformGrid>
+            </StackPanel>
         </Grid>
         <Grid Grid.Row="3">
             <Grid.Resources>
                 <Style x:Key="EditStyle" TargetType="Button" BasedOn="{StaticResource BaseButton}">
                     <Setter Property="Visibility" Value="Collapsed"/>
+                    <Setter Property="Width" Value="150"/>
                     <Setter Property="Background" Value="{StaticResource Acent}"/>
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding SelectedItems.Count, ElementName=LvContracts}"  Value="1">
@@ -85,16 +87,18 @@
                     </Style.Triggers>
                 </Style>
             </Grid.Resources>
-        <UniformGrid Grid.Row="3" Columns="3">
-            <UniformGrid.Resources>
+        <StackPanel Orientation="Horizontal" Grid.Row="3">
+            <StackPanel.Resources>
                 <Style TargetType="Button" BasedOn="{StaticResource BaseButton}">
                     <Setter Property="Background" Value="{StaticResource Acent}"/>
+                    <Setter Property="Margin" Value="5"/>
+                    <Setter Property="Width" Value="150"/>
                 </Style>
-            </UniformGrid.Resources>
+            </StackPanel.Resources>
             <Button Content="Добавить" Click="BtContractAddCLick"/>
             <Button Content="Изменить" Click="BtContractEditClick" Style="{StaticResource EditStyle}"/>
             <Button Content="Удалить" Click="BtContractDelClick" Style="{StaticResource EditStyle}"/>
-        </UniformGrid>
+        </StackPanel>
         <StackPanel  Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
             <StackPanel.Resources>
                 <Style TargetType="Button">

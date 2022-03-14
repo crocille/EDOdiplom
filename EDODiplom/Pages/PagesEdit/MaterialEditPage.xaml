@@ -1,0 +1,36 @@
+﻿<Page x:Class="EDODiplom.Pages.PagesEdit.MaterialEditPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:EDODiplom.Pages.PagesEdit"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MaterialEditPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <ScrollViewer>
+            <StackPanel MaxWidth="500">
+                <StackPanel.Resources>
+                    <Style TargetType="TextBox" BasedOn="{StaticResource BaseTextBox}">
+                        <Setter Property="FontSize" Value="20"/>
+                    </Style>
+                </StackPanel.Resources>
+                <TextBlock Text="Наименование"/>
+                <TextBox Text="{Binding Name}"/>
+                <ListView Margin="5" Name="LvMaterialAdd" ItemsSource="{Binding Materials_has_Supply}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
+        </ScrollViewer>
+        <Button Grid.Row="1" Content="Сохранить" Click="BtSaveMaterialClick"/>
+    </Grid>
+</Page>
