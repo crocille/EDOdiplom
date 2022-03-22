@@ -90,16 +90,33 @@ namespace EDODiplom.Pages
 
         private void BtMaterialAddCLick(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new MaterialEditPage());
+            NavigationService.Navigate(new MaterialEditPage(new Material()));
         }
 
         private void BtMaterialDelClick(object sender, RoutedEventArgs e)
         {
 
+            if (LvMaterials.SelectedItems.Count > 0)
+            {
+                Material material = LvMaterials.SelectedItem as Material;
+                if (MessageBox.Show("Вы точно хотите удалить материал " + material.Name + "?", "Удалить материал", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    EfModel.Init().Materials.Remove(material);
+                    EfModel.Init().SaveChanges();
+                    UpdateData();
+                }
+            }
+
         }
 
         private void BtMaterialEditClick(object sender, RoutedEventArgs e)
         {
+
+            if (LvMaterials.SelectedItems.Count > 0)
+            {
+                Material material = LvMaterials.SelectedItem as Material;
+                NavigationService.Navigate(new MaterialEditPage(material));
+            }
 
         }
     }

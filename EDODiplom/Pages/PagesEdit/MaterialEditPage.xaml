@@ -8,29 +8,47 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MaterialEditPage">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="60"/>
-        </Grid.RowDefinitions>
-        <ScrollViewer>
-            <StackPanel MaxWidth="500">
-                <StackPanel.Resources>
-                    <Style TargetType="TextBox" BasedOn="{StaticResource BaseTextBox}">
-                        <Setter Property="FontSize" Value="20"/>
-                    </Style>
-                </StackPanel.Resources>
+
+    <ScrollViewer>
+        <StackPanel Width="650">
+            <Image Source="{Binding ImageMaterial, TargetNullValue={StaticResource Picture}}" Height="150" MouseDown="ImageChangeClick"/>
+            <StackPanel Orientation="Vertical">
                 <TextBlock Text="Наименование"/>
                 <TextBox Text="{Binding Name}"/>
-                <ListView Margin="5" Name="LvMaterialAdd" ItemsSource="{Binding Materials_has_Supply}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock/>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                <TextBlock Text="Описание"/>
+                <TextBox Text="{Binding Description}" TextWrapping="Wrap" AcceptsReturn="True"/>
             </StackPanel>
-        </ScrollViewer>
-        <Button Grid.Row="1" Content="Сохранить" Click="BtSaveMaterialClick"/>
-    </Grid>
+            <Grid>
+                <UniformGrid Columns="4" Name="SupplySelect">
+                    <UniformGrid.Resources>
+                        <Style TargetType="TextBox" BasedOn="{StaticResource BaseTextBox}">
+                            <Setter Property="FontSize" Value="20"/>
+                        </Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource BaseButton}">
+                        </Style>
+                    </UniformGrid.Resources>
+                    <ComboBox Name="CbName" SelectionChanged="NameChange" DisplayMemberPath="Title" SelectedItem="{Binding Supplier}"/>
+                    <TextBox Text="{Binding Material_Price}"/>
+                    <Button Content="Добавить" Click="BtAddClick"/>
+                    <Button Content="Удалить" Click="BtRemClick"/>
+                </UniformGrid>
+            </Grid>
+            <ListView MinHeight="50" Margin="5" Name="LvMaterialAdd" ItemsSource="{Binding Materials_has_Suppliers}">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <UniformGrid Columns="2">
+                            <TextBlock Text="{Binding Supplier.Title}"/>
+                            <TextBlock Text="{Binding Material_Price}"/>
+                        </UniformGrid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Content="Сохранить" Click="BtSaveMaterialClick"/>
+        </StackPanel>
+    </ScrollViewer>
 </Page>

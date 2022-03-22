@@ -16,14 +16,11 @@
             <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <TextBox Name="TbSearch" Grid.Column="0" TextChanged="TbSearchChange"/>
-            <ComboBox Name="CbSort" Grid.Column="1" SelectionChanged="SortChange"/>
-            <ComboBox Name="CbFilter" Grid.Column="2" SelectionChanged="FilterChange" DisplayMemberPath= "MaterialTypeName"/>
+            <UniformGrid Columns="3">
+                <TextBox Name="TbSearch" Grid.Column="0" TextChanged="TbSearchChange"/>
+                <ComboBox Name="CbSort" Grid.Column="1" SelectionChanged="SortChange"/>
+                <ComboBox Name="CbFilter" Grid.Column="2" SelectionChanged="FilterChange" DisplayMemberPath= "MaterialTypeName"/>
+            </UniformGrid>
         </Grid>
         <ListView Name="LvMaterials" Grid.Row="1" SelectionMode="Multiple" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListView.ItemContainerStyle>
@@ -54,7 +51,7 @@
                                     </StackPanel.Resources>
                                     <TextBlock Text="{Binding Name}"/>
                                 </StackPanel>
-                                <ListView Grid.Row="1" ItemsSource="{Binding Materials_has_Supply}" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                <ListView Grid.Row="1" ItemsSource="{Binding Materials_has_Suppliers}" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                                     <ListView.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <StackPanel Orientation="Horizontal"/>
@@ -64,10 +61,8 @@
                                         <DataTemplate>
                                             <Border BorderBrush="Black" BorderThickness="1">
                                                 <StackPanel Orientation="Horizontal">
-                                                    <TextBlock Margin="5"  Text="{Binding Supply.Supplier.Title}"/>
+                                                    <TextBlock Margin="5"  Text="{Binding Supplier.Title}"/>
                                                     <TextBlock Text="|"/>
-                                                    <TextBlock Margin="5" Text="{Binding Material_Count}"/>
-                                                    <TextBlock Margin="5" Text="{Binding Supply.Date, StringFormat='yyyy-MM-dd'}"/>
                                                     <TextBlock Margin="5" Text="{Binding Material_Price}"/>
                                                 </StackPanel>
                                             </Border>
