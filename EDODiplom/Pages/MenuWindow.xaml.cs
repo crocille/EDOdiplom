@@ -47,7 +47,7 @@ namespace EDODiplom.Pages
 
         private void ItemDocumentObject(object sender, RoutedEventArgs e)
         {
-
+            FRnav.Navigate(new ObjectDocumentPage());
         }
 
         private void BtExit(object sender, RoutedEventArgs e)

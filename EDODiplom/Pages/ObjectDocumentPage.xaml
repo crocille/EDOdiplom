@@ -1,0 +1,114 @@
+﻿<Page x:Class="EDODiplom.Pages.ObjectDocumentPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:EDODiplom.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ObjectDocumentPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <TextBox Name="TbSearch" TextChanged="TbSearchChange" Grid.Row="0"/>
+        <ListView Name="LvObjectDocument" Grid.Row="1" SelectionMode="Multiple">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Gray" BorderThickness="1">
+                        <Grid Height="200">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="{Binding ObjectScan}" Margin="5"/>
+                            <Grid Grid.Column="1" Margin="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <StackPanel Orientation="Horizontal" Grid.Row="0">
+                                    <StackPanel.Resources>
+                                        <Style TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlock}">
+                                            <Setter Property="FontSize" Value="25"/>
+                                        </Style>
+                                    </StackPanel.Resources>
+                                    <TextBlock Text="{Binding ObjectName}"/>
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Grid Grid.Row="2">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Margin" Value="5"/>
+                    </Style>
+                </StackPanel.Resources>
+                <Button>
+                    <Image Source="/Resources/printer.png" />
+                </Button>
+                <Button>
+                    <Image Source="/Resources/import.png"/>
+                </Button>
+                <Button>
+                    <Image Source="/Resources/export.png" />
+                </Button>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="3">
+            <Grid.Resources>
+                <Style x:Key="EditStyle" TargetType="Button" BasedOn="{StaticResource BaseButton}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Setter Property="Width" Value="150"/>
+                    <Setter Property="Background" Value="{StaticResource Acent}"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding SelectedItems.Count, ElementName=LvContracts}"  Value="1">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Resources>
+            <StackPanel Orientation="Horizontal" Grid.Row="3">
+                <StackPanel.Resources>
+                    <Style TargetType="Button" BasedOn="{StaticResource BaseButton}">
+                        <Setter Property="Background" Value="{StaticResource Acent}"/>
+                        <Setter Property="Margin" Value="5"/>
+                        <Setter Property="Width" Value="150"/>
+                    </Style>
+                </StackPanel.Resources>
+                <Button Content="Добавить" Click="BtObjectDocumentAddCLick"/>
+                <Button Content="Изменить" Click="BtObjectDocumentEditClick" Style="{StaticResource EditStyle}"/>
+                <Button Content="Удалить" Click="BtObjectDocumentDelClick" Style="{StaticResource EditStyle}"/>
+            </StackPanel>
+            <StackPanel  Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                <StackPanel.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="Margin" Value="3,0"/>
+                        <Setter Property="BorderBrush" Value="Transparent"/>
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="FontSize" Value="25"/>
+                    </Style>
+                </StackPanel.Resources>
+                <Button Name="BtBackPage" Content="&lt;"/>
+                <StackPanel Name="StackPage" Orientation="Horizontal">
+
+                </StackPanel>
+                <Button Name="BtNextPage" Content=">"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

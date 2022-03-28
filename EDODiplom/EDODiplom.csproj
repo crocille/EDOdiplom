@@ -119,6 +119,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\ObjectDocumentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\PagesEdit\ContractEditPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -139,6 +143,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\PagesEdit\ObjectDocumentEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\PagesEdit\SupplierEditPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -151,6 +159,9 @@
   <ItemGroup>
     <Compile Include="Pages\AutorizationPage.xaml.cs">
       <DependentUpon>AutorizationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ObjectDocumentPage.xaml.cs">
+      <DependentUpon>ObjectDocumentPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\PagesEdit\ContractEditPage.xaml.cs">
       <DependentUpon>ContractEditPage.xaml</DependentUpon>
@@ -166,6 +177,9 @@
     </Compile>
     <Compile Include="Pages\PagesEdit\MaterialEditPage.xaml.cs">
       <DependentUpon>MaterialEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PagesEdit\ObjectDocumentEditPage.xaml.cs">
+      <DependentUpon>ObjectDocumentEditPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\PagesEdit\SupplierEditPage.xaml.cs">
       <DependentUpon>SupplierEditPage.xaml</DependentUpon>

@@ -9,6 +9,36 @@
       Title="SupplierEditPage">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <ScrollViewer>
+            <StackPanel MaxWidth="500" VerticalAlignment="Center">
+                <StackPanel.Resources>
+                    <Style TargetType="TextBox" BasedOn="{StaticResource BaseTextBox}">
+                        <Setter Property="FontSize" Value="20"/>
+                    </Style>
+                </StackPanel.Resources>
+                <Image Source="{Binding Photo, TargetNullValue={StaticResource Picture}}" Height="150" MouseDown="ImageChangeClick"/>
+                <StackPanel Grid.Row="0" Orientation="Vertical">
+                    <TextBlock Text="Наименование"/>
+                    <TextBox Text="{Binding Title}"/>
+                    <TextBlock Text="Адрес"/>
+                    <TextBox Text="{Binding Adress}"/>
+                    <TextBlock Text="Телефон"/>
+                    <TextBox Text="{Binding Phone}"/>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+        <UniformGrid Grid.Row="1" Columns="2">
+            <UniformGrid.Resources>
+                <Style TargetType="Button" BasedOn="{StaticResource BaseButton}">
+                    <Setter Property="Background" Value="{StaticResource Acent}"/>
+                </Style>
+            </UniformGrid.Resources>
+            <Button Content="Сохранить" Click="BtSaveSupplierClick"/>
+            <Button Content="Отмена" Click="BtCancelSupplierClick"/>
+        </UniformGrid>
     </Grid>
 </Page>

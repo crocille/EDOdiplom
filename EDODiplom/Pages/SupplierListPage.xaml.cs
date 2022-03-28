@@ -26,30 +26,48 @@ namespace EDODiplom.Pages
         public SupplierListPage()
         {
             InitializeComponent();
+            UpdateData();
+        }
+
+        private void UpdateData()
+        {
+            IEnumerable<Supplier> suppliers = EfModel.Init().Suppliers.
+                Where(s => s.Title.Contains(TbSearchSupplier.Text));
+            LvSuppliers.ItemsSource = EfModel.Init().Suppliers.ToList();
         }
 
         private void TbSearchSupplierChanged(object sender, TextChangedEventArgs e)
         {
-
+            UpdateData();
         }
 
         private void BtSupplierAddCLick(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new SupplierEditPage());
+            NavigationService.Navigate(new SupplierEditPage(new Supplier()));
         }
 
         private void BtSupplierEditClick(object sender, RoutedEventArgs e)
         {
-            /*if (LvSuppliers.SelectedItems.Count > 0)
+            if (LvSuppliers.SelectedItems.Count > 0)
             {
                 Supplier supplier = LvSuppliers.SelectedItem as Supplier;
                 NavigationService.Navigate(new SupplierEditPage(supplier));
-            }*/
+            }
         }
 
         private void BtSupplierDelClick(object sender, RoutedEventArgs e)
         {
 
+            if (LvSuppliers.SelectedItems.Count > 0)
+            {
+                 Supplier supplier = LvSuppliers.SelectedItem as Supplier;
+                if (MessageBox.Show("Вы точно хотите удалить поставщика " + supplier.Title + "?", "Удалить поставщика", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    EfModel.Init().Suppliers.Remove(supplier);
+                    EfModel.Init().SaveChanges();
+                    UpdateData();
+                }
+            }
         }
     }
 }
